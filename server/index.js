@@ -30,11 +30,22 @@ io.on("connection", (socket) => {
 //     })
 // })
 
-io.on("connection", (socket) => {
-  socket.on("chat", (message) => {
-    console.log("chat", message);
+// io.on("connection", (socket) => {
+//   socket.on("chat message", (message) => {
+//     console.log(message);
+//     io.emit("chat message","i am from backend")
+//   });
+// });
+
+
+
+io.on('connection', (socket) => {
+  socket.on('chat message', (msg) => {
+    io.emit('chat message', msg);
   });
 });
+
+
 
 app.get("/", (req, res) => {
   res.send("<h1>Hello world</h1>");
